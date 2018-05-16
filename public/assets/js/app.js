@@ -30,11 +30,15 @@ $(document).ready(function () {
             .addClass('toggle--moving');
 
         setTimeout(function () {
-            $(toggle).removeClass('toggle--moving');
+            $(toggle).removeClass('toggle--moving');    
         }, 200)
     });
     // event modal on click timeout so the API can populate
+<<<<<<< HEAD
     $(".findEvent").click(function () {
+=======
+    $(".findEvent").click(function (){
+>>>>>>> 8356ff2ea9fa28f90cc06179f817eca6f032f52e
         $('#loader').show();
         setTimeout(function () {
             $('#loader').hide();
@@ -89,7 +93,11 @@ function validateSignUp() {
     if (b == "") {
         $(".lastName").css({ "border-bottom": "2px solid #ff0000" });
         $(".lastName1").css({ "color": "#ff0000" });
+<<<<<<< HEAD
     } else {
+=======
+    } else{
+>>>>>>> 8356ff2ea9fa28f90cc06179f817eca6f032f52e
         $(".lastName1").css({ "color": "#cfcfcf" });
         $(".lastName").css({ "border-bottom": "1px solid #000000" });
     }
@@ -112,5 +120,14 @@ function validateSignUp() {
 
 
 
+<<<<<<< HEAD
+=======
+
+
+
+
+
+
+>>>>>>> 8356ff2ea9fa28f90cc06179f817eca6f032f52e
 
 
