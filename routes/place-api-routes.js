@@ -3,7 +3,7 @@ require("dotenv").config();
 var bodyParser = require("body-parser");
 var request = require("request")
 var router = require('express').Router();
-var keys = require("../keys.js"); 
+var keys = require("../keys.js");
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 var googleApi = (keys.google);
@@ -12,10 +12,9 @@ var googleApi = (keys.google);
 router.get('/api/places', function (req, res, next) {
 
 	var city = req.query.city;
-<<<<<<< HEAD
 
 
-	request("https://maps.googleapis.com/maps/api/geocode/json?address=" + city + "&key=" + apiKey, function (err, response, data) {
+	request("https://maps.googleapis.com/maps/api/geocode/json?address=" + city + "&key=" + googleApi.key, function (err, response, data) {
 		var places = JSON.parse(data);
 		var lat = (places.results[0].geometry.location.lat);
 		var lng = (places.results[0].geometry.location.lng);
@@ -24,21 +23,7 @@ router.get('/api/places', function (req, res, next) {
 		// var userInput = "bar";
 
 
-		request("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lat + "," + lng + "&radius=5500&type=bar&key=" + apiKey, function (err, response, data) {
-=======
-	
-
-		request("https://maps.googleapis.com/maps/api/geocode/json?address=" + city + "&key=" + googleApi.key, function(err, response, data){
-			var places = JSON.parse(data);
-			var lat = (places.results[0].geometry.location.lat);
-			var lng = (places.results[0].geometry.location.lng);
-			console.log(lat);
-			console.log(lng);
-			// var userInput = "bar";
-			
-		
-			request("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lat + "," + lng + "&radius=20000&type=bar&key=" + googleApi.key, function (err, response, data) {
->>>>>>> 8356ff2ea9fa28f90cc06179f817eca6f032f52e
+		request("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lat + "," + lng + "&radius=20000&type=bar&key=" + googleApi.key, function (err, response, data) {
 			//JSON.parse(data).results[i].name
 			var placeList = JSON.parse(data).results;
 			var randomPlace = [];
@@ -65,16 +50,7 @@ router.get('/api/places', function (req, res, next) {
 
 	})
 
-<<<<<<< HEAD
-
-
-
-
-
 });
-=======
-});	
->>>>>>> 8356ff2ea9fa28f90cc06179f817eca6f032f52e
 
 module.exports = router;
 

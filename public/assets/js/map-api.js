@@ -9,7 +9,6 @@
 // }
 // document.querySelector('#mapsModal').addEventListener('click', function () {
 
-    
+
 //     // initMap();
 // });
-

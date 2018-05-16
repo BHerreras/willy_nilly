@@ -1,10 +1,6 @@
 
-<<<<<<< HEAD
-=======
-var mapAddress = [];  
-var eventAddress;   
->>>>>>> 8356ff2ea9fa28f90cc06179f817eca6f032f52e
-
+var mapAddress = [];
+var eventAddress;
 
 $(".findEvent").click(function () {
     if ($(".toggle").hasClass("toggle--events")) {
@@ -17,23 +13,13 @@ $(".findEvent").click(function () {
         $.get("/api/events", searchTerms, function (data) {
             console.log(data);
             var mapsTitle;
-<<<<<<< HEAD
             if (data.length === 0) {
-=======
-            if(data.length === 0){
->>>>>>> 8356ff2ea9fa28f90cc06179f817eca6f032f52e
                 $("#view").html("No results found")
             } else {
                 for (var x = 0; x < data.length; x++) {
                     var title = (data[x].title);
-<<<<<<< HEAD
 
                     var image;
-                    var map = "<a href=# data-toggle=modal class=mapsLink data-target=#mapsModal>Get Map</a>";
-=======
-                    
-                    var image; 
->>>>>>> 8356ff2ea9fa28f90cc06179f817eca6f032f52e
                     var sTime = convert(mTime);
                     var mTime = (data[x].start_time);
                     var venue = (data[x].venue_name);
@@ -46,41 +32,30 @@ $(".findEvent").click(function () {
                     function convert(input) {
                         return moment(input).format('dddd, MMMM Do YYYY @ h:mm A');
                     }
-<<<<<<< HEAD
-                    eventButton.append("<h1>" + title + "</h1>");
-                    eventButton.append("<br>" + sTime + "<br>" + venue + "<br>" + venueAdress + "<br>");
-                    eventButton.append("<hr>")
-                    eventButton.append(map);
+                    eventButton.append("<br>" + "<a href=" + url + " target=_blank>" + title + "</a>" + "<br>");
+                    eventButton.append("<br>" + sTime + "<br>" + venue + "<br>" + "<hr>" + "<button class=address mapsLink data-toggle=modal data-target=#mapsModal>" + venueAddress + "," + city + "," + state + "</button>" + "<br>" + "<br>");
+
 
 
 
                     $("#view").append(eventButton);
-                }
-=======
-                    eventButton.append("<br>" + "<a href=" + url + " target=_blank>" + title + "</a>" + "<br>");
-                    eventButton.append("<br>" + sTime + "<br>" + venue + "<br>" + "<hr>" + "<button class=address mapsLink data-toggle=modal data-target=#mapsModal>" + venueAddress + "," + city + "," + state + "</button>" + "<br>" + "<br>");
-                  
-                    
-                   
 
-                   $ ("#view").append(eventButton);
-                
-                   
-                
+
+
                 }
-            } 
-            $(".address").click(function(){
+            }
+            $(".address").click(function () {
                 console.log(this);
                 mapAddress.push(this);
                 eventAddress = mapAddress[0].firstChild.data;
                 console.log(eventAddress.toString());
                 var addressQuery = {
-                    address : eventAddress
+                    address: eventAddress
                 }
 
-                $.get("/api/maps", addressQuery, function(data){
-                    var lat =(data.results[0].geometry.location.lat);
-                    var lng =(data.results[0].geometry.location.lng);
+                $.get("/api/maps", addressQuery, function (data) {
+                    var lat = (data.results[0].geometry.location.lat);
+                    var lng = (data.results[0].geometry.location.lng);
 
                     console.log(lat);
                     console.log(lng);
@@ -89,10 +64,10 @@ $(".findEvent").click(function () {
 
                     function initMap() {
                         center = { lat: lat, lng: lng },
-                        map = new google.maps.Map(document.getElementById('map'), {
-                            center: center,
-                            zoom: 15
-                        });
+                            map = new google.maps.Map(document.getElementById('map'), {
+                                center: center,
+                                zoom: 15
+                            });
                         var marker = new google.maps.Marker({
                             position: center,
                             map: map
@@ -101,27 +76,17 @@ $(".findEvent").click(function () {
                     initMap();
                     // document.querySelector('#mapsModal').addEventListener('click', function () {
 
-                        
-                        
+
+
                     // });
-                    
-                    
+
+
                 })
                 mapAddress = [];
                 eventAddress;
             })
-               
-        });
-    }    
->>>>>>> 8356ff2ea9fa28f90cc06179f817eca6f032f52e
-
-            }
 
         });
     }
 
-<<<<<<< HEAD
 })
-=======
-
->>>>>>> 8356ff2ea9fa28f90cc06179f817eca6f032f52e
